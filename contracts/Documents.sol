@@ -8,19 +8,17 @@ contract Documents {
   }
 
   function notarize(string document) returns (bool) {
-    var proof = sha256(document);
-    if(people[msg.sender].length == 0){
+    bytes32 proof = sha256(document);
+    if(people[msg.sender].owner == 0){
       Person memory newPerson;
       newPerson.owner = msg.sender;
-      newPerson.documents[proof] = true;
       people[msg.sender] = newPerson;
-    }else{
-      people[msg.sender].documents[proof] = true;
     }
+    people[msg.sender].documents[proof] = true;
     return true;
   }
 
-  function check(string document) returns (bool){
+  function check(string document) constant returns (bool){
     return people[msg.sender].documents[sha256(document)];
   }
 }
