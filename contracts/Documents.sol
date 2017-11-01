@@ -1,6 +1,6 @@
 pragma solidity ^0.4.17;
 
-contract Wills {
+contract Documents {
   mapping (address => Person) public people;
   struct Person {
     address _owner; //proof of ownership
