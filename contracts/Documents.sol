@@ -7,7 +7,11 @@ contract Documents {
     mapping (bytes32 => bool) documents; //proof of existence map
   }
 
-  function notarize(string document) returns (bool) {
+  function Documents(){
+
+  }
+
+  function addDocument(string document) {
     bytes32 proof = sha256(document);
     if(people[msg.sender].owner == 0){
       Person memory newPerson;
@@ -15,10 +19,9 @@ contract Documents {
       people[msg.sender] = newPerson;
     }
     people[msg.sender].documents[proof] = true;
-    return true;
   }
 
-  function check(string document) constant returns (bool){
+  function checkDocument(string document) constant returns (bool){
     return people[msg.sender].documents[sha256(document)];
   }
 }
