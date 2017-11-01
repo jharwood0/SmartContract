@@ -76,7 +76,7 @@ App = {
 
   handleAdopt: function() {
     event.preventDefault();
-
+    console.log("HANDLE ADOPT");
     var petId = parseInt($(event.target).data('id'));
 
     var adoptionInstance;
