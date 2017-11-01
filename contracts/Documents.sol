@@ -7,10 +7,6 @@ contract Documents {
     mapping (bytes32 => bool) documents; //proof of existence map
   }
 
-  function Documents(){
-
-  }
-
   function addDocument(string document) {
     bytes32 proof = sha256(document);
     if(people[msg.sender].owner == 0){
